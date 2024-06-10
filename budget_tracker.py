@@ -1,6 +1,10 @@
 
 import json
 
+def add_expense(expenses, description, amount):
+    expenses.append({"description": description, "amount": amount})
+    print(f"Added expense: {description}, Amount: {amount}")
+
 def main():
     print("Welcome to the Budget App!")
     initial_budget = float(input("Please enter your initial budget: "))
