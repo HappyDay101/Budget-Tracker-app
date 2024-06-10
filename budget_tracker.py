@@ -20,9 +20,21 @@ def show_budget_details(budget, expenses):
     print(f"Total Spent: {get_total_expenses(expenses)}")
     print(f"Remaining Budget: {get_balance(budget, expenses)}")
 
+def load_budget_data(filepath):
+    try:
+        with open(filepath, 'r') as file:
+            data = json.load(file)
+            return data["initial_budget"], data["expenses"]
+    except (FileNotFoundError, json.JSONDecodeError):
+        return 0, []  # Return default values if the file doesn't exist or is empty/corrupted
+
+
 def main():
     print("Welcome to the Budget App!")
     initial_budget = float(input("Please enter your initial budget: "))
+    # Save you data
+    filepath = 'budget_data.json'
+    initial_budget, expenses = load_budget_data(filepath)
     budget = initial_budget
     expenses = []
 
