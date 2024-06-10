@@ -5,6 +5,14 @@ def add_expense(expenses, description, amount):
     expenses.append({"description": description, "amount": amount})
     print(f"Added expense: {description}, Amount: {amount}")
 
+def show_budget_details(budget, expenses):
+    print(f"Total Budget: {budget}")
+    print("Expenses:")
+    for expense in expenses:
+        print(f"- {expense['description']}: {expense['amount']}")
+    print(f"Total Spent: {get_total_expenses(expenses)}")
+    print(f"Remaining Budget: {get_balance(budget, expenses)}")
+
 def main():
     print("Welcome to the Budget App!")
     initial_budget = float(input("Please enter your initial budget: "))
